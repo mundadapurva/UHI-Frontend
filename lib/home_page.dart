@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'design/widgets/uhi_bottom_navbar.dart';
-import 'design/widgets/uhi_carousel.dart';
+
+import 'design/widgets/uhi_patient_register.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
@@ -36,7 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(width: 10),
         ],
       ),
-      body: const UhiCarousel(),
+      body: const UhiPatientRegister(),
       bottomNavigationBar: const UhiBottomNavbar(),
     );
   }

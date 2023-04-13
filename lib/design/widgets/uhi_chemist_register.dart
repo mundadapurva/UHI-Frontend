@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class UhiDoctorRegister extends StatefulWidget {
-  const UhiDoctorRegister({super.key});
+class UhiChemistRegister extends StatefulWidget {
+  const UhiChemistRegister({super.key});
 
   @override
-  State<UhiDoctorRegister> createState() => _UhiDoctorRegisterState();
+  State<UhiChemistRegister> createState() => _UhiChemistRegisterState();
 }
 
-class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
+class _UhiChemistRegisterState extends State<UhiChemistRegister> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -109,48 +109,6 @@ class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
                 border: OutlineInputBorder(),
                 contentPadding: EdgeInsets.all(5),
                 counter: Offstage(),
-              ),
-            ),
-            const SizedBox(height: 15),
-            const Text(
-              'SPECIALIZATION',
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            TextFormField(
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter your specialization';
-                }
-                return null;
-              },
-              decoration: const InputDecoration(
-                hintText: 'Enter your specialization',
-                border: OutlineInputBorder(),
-                contentPadding: EdgeInsets.all(5),
-              ),
-            ),
-            const SizedBox(height: 15),
-            const Text(
-              'ASSOCIATED HOSPITAL',
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            TextFormField(
-              validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter your associated hospital';
-                }
-                return null;
-              },
-              decoration: const InputDecoration(
-                hintText: 'Enter your associated hospital',
-                border: OutlineInputBorder(),
-                contentPadding: EdgeInsets.all(5),
               ),
             ),
             const SizedBox(height: 15),
