@@ -8,6 +8,7 @@ class UhiBottomNavbar extends StatelessWidget {
     return BottomNavigationBar(
       iconSize: 25,
       selectedFontSize: 14.5,
+      selectedItemColor: Colors.blue,
       unselectedFontSize: 13,
       currentIndex: 0,
       onTap: (index) {},

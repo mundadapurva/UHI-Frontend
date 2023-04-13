@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'design/widgets/uhi_bottom_navbar.dart';
 
+import 'design/widgets/uhi_drawer.dart';
 import 'design/widgets/uhi_patient_register.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -27,7 +28,7 @@ class _MyHomePageState extends State<MyHomePage> {
             bottom: Radius.circular(10),
           ),
         ),
-        leading: const Icon(Icons.menu),
+        // leading: const Icon(Icons.menu),
         actions: const [
           CircleAvatar(
             radius: 21,
@@ -37,6 +38,7 @@ class _MyHomePageState extends State<MyHomePage> {
           SizedBox(width: 10),
         ],
       ),
+      drawer: const UhiDrawer(),
       body: const UhiPatientRegister(),
       bottomNavigationBar: const UhiBottomNavbar(),
     );
