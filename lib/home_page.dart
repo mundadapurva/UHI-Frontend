@@ -5,7 +5,6 @@ import 'package:landing_page/design/widgets/uhi_news_list.dart';
 import 'design/widgets/uhi_bottom_navbar.dart';
 
 import 'design/widgets/uhi_drawer.dart';
-import 'design/widgets/uhi_patient_register.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});

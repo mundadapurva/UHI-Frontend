@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:landing_page/design/widgets/uhi_intro_screen.dart';
 
-import 'home_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         brightness: Brightness.dark,
       ),
       themeMode: ThemeMode.system,
-      home: const MyHomePage(title: 'Unified Healthcare Interface'),
+      home: const Scaffold(body: UhiIntroScreen()),
     );
   }
 }
