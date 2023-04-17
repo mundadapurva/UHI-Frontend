@@ -50,6 +50,16 @@ class UhiDrawer extends StatelessWidget {
           Card(
             elevation: 2,
             child: ListTile(
+              leading: const Icon(Icons.medication_outlined),
+              title: const Text('Chemist'),
+              onTap: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ),
+          Card(
+            elevation: 2,
+            child: ListTile(
               leading: const Icon(Icons.security_outlined),
               title: const Text('Insurance'),
               onTap: () {

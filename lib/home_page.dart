@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:landing_page/design/widgets/uhi_carousel.dart';
-import 'package:landing_page/design/widgets/uhi_news_list.dart';
+import 'package:landing_page/design/widgets/uhi_book_appointment.dart';
 
 import 'design/widgets/uhi_bottom_navbar.dart';
 
@@ -40,14 +39,15 @@ class _MyHomePageState extends State<MyHomePage> {
         ],
       ),
       drawer: const UhiDrawer(),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const UhiCarousel(),
-            UhiNewsList(),
-          ],
-        ),
-      ),
+      // body: SingleChildScrollView(
+      //   child: Column(
+      //     children: [
+      //       const UhiCarousel(),
+      //       UhiNewsList(),
+      //     ],
+      //   ),
+      // ),
+      body: const UhiBookAppointment(),
       bottomNavigationBar: const UhiBottomNavbar(),
     );
   }
