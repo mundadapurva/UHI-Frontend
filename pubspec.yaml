@@ -39,6 +39,10 @@ dependencies:
   slider_button: ^2.0.0
   animated_button: ^0.2.0
   animated_text_kit: ^4.2.2
+  bloc: ^8.1.1
+  http: ^0.13.5
+  flutter_bloc: ^8.1.2
+  shared_preferences: ^2.1.0
 
 dev_dependencies:
   flutter_test:
