@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:landing_page/design/widgets/uhi_book_appointment.dart';
+import 'package:landing_page/design/widgets/uhi_qr_scanner.dart';
 
-import 'design/widgets/uhi_book_bed.dart';
 import 'design/widgets/uhi_bottom_navbar.dart';
 
 import 'design/widgets/uhi_drawer.dart';
@@ -48,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //     ],
       //   ),
       // ),
-      body: const UhiBookBed(),
+      body: const UhiQRScanner(),
       bottomNavigationBar: const UhiBottomNavbar(),
     );
   }

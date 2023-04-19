@@ -39,6 +39,9 @@ dependencies:
   slider_button: ^2.0.0
   animated_button: ^0.2.0
   animated_text_kit: ^4.2.2
+  qr_flutter: ^4.0.0
+  qrscan:
+  permission_handler: 
 
 dev_dependencies:
   flutter_test:

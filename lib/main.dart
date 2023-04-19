@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:landing_page/design/widgets/uhi_intro_screen.dart';
 
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
@@ -30,7 +29,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         brightness: Brightness.dark,
       ),
-      themeMode: ThemeMode.system,
+      // themeMode: ThemeMode.system,
+      themeMode: ThemeMode.light,
       home: const Scaffold(body: UhiIntroScreen()),
     );
   }
