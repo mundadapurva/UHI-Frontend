@@ -105,7 +105,7 @@ class UhiIntroScreen extends StatelessWidget {
                       Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
                           builder: (context) => const UhiPatientRegister(),
-                        ),
+                        ), // TODO: ask for type of registration
                       );
                     },
                     enabled: true,

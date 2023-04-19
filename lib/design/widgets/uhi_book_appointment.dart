@@ -4,9 +4,9 @@ import 'package:landing_page/design/widgets/uhi_specialities_list.dart';
 import '../../logic/search_delegate/speciality_search.dart';
 
 class UhiBookAppointment extends StatefulWidget {
-  const UhiBookAppointment({super.key, required this.userId});
+  const UhiBookAppointment({super.key});
 
-  final String userId;
+
 
   @override
   State<UhiBookAppointment> createState() => _UhiBookAppointmentState();
@@ -17,7 +17,6 @@ class _UhiBookAppointmentState extends State<UhiBookAppointment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),

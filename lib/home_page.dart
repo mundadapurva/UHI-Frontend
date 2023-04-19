@@ -47,7 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
       //     ],
       //   ),
       // ),
-      body:  UhiBookAppointment(userId: widget.userId),
+      body: const UhiBookAppointment(),
       bottomNavigationBar: const UhiBottomNavbar(),
     );
   }

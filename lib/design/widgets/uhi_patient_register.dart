@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:landing_page/design/pages/login_page.dart';
 import 'package:landing_page/logic/auth_bloc/auth_bloc.dart';
 
 import '../../home_page.dart';
@@ -35,8 +36,9 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => MyHomePage(
-                userId: state.id,
+              builder: (context) => LoginPage(
+                id: state.id,
+                type: state.type ?? 'user',
               ),
             ),
           );
@@ -49,6 +51,9 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
         }
       },
       child: Scaffold(
+        appBar: AppBar(
+          title: const Text('Patient Register'),
+        ),
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(20),
@@ -173,14 +178,14 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                     },
                     controller: _dobController,
                     decoration: const InputDecoration(
-                      hintText: 'Enter your landmark',
+                      hintText: 'Enter your dob',
                       border: OutlineInputBorder(),
                       contentPadding: EdgeInsets.all(5),
                     ),
                   ),
                   const SizedBox(height: 15),
                   const Text(
-                    'CITY',
+                    'ADDRESS',
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
@@ -189,57 +194,14 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                   TextFormField(
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter your city';
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                      hintText: 'Enter your city',
-                      border: OutlineInputBorder(),
-                      contentPadding: EdgeInsets.all(5),
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  const Text(
-                    'STATE',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  TextFormField(
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter your state';
-                      }
-                      return null;
-                    },
-                    decoration: const InputDecoration(
-                      hintText: 'Enter your state',
-                      border: OutlineInputBorder(),
-                      contentPadding: EdgeInsets.all(5),
-                    ),
-                  ),
-                  const SizedBox(height: 15),
-                  const Text(
-                    'PINCODE',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  TextFormField(
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter your pincode';
+                        return 'Please enter your address';
                       }
                       return null;
                     },
                     controller: _addressController,
-                    maxLength: 6,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
-                      hintText: 'Enter your pincode',
+                      hintText: 'Enter your address',
                       border: OutlineInputBorder(),
                       contentPadding: EdgeInsets.all(5),
                     ),

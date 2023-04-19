@@ -5,10 +5,11 @@ part of 'auth_bloc.dart';
 abstract class AuthEvent {}
 
 class AuthLoginEvent extends AuthEvent {
-  final String email;
+  final String id;
   final String password;
+  final String type;
 
-  AuthLoginEvent({required this.email, required this.password});
+  AuthLoginEvent({required this.id, required this.password, required this.type});
 }
 
 class AuthRegisterEvent extends AuthEvent {
@@ -52,6 +53,26 @@ class AuthRegisterDoctorEvent extends AuthEvent {
     required this.specialization,
     required this.hospital,
     required this.qualification,
+  });
+}
+
+class AuthRegisterChemistEvent extends AuthEvent {
+  final String email;
+  final String password;
+  final String license;
+  final String name;
+  final String phone;
+  final String shopAddress;
+  final String shopName;
+
+  AuthRegisterChemistEvent({
+    required this.email,
+    required this.password,
+    required this.license,
+    required this.name,
+    required this.phone,
+    required this.shopAddress,
+    required this.shopName,
   });
 }
 

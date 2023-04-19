@@ -2,8 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 Future<List<String>> fetchSpecialties() async {
-  final response = await http.get(Uri.parse('http://localhost:3000/doctors'));
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? token = prefs.getString('accessToken');
+  final headers = {
+  'authorization': 'Bearer $token',
+};
+  final response = await http.get(Uri.parse('http://localhost:3000/doctors'), headers: headers);
   if (response.statusCode == 200) {
     final parsed = jsonDecode(response.body) as List<dynamic>;
 
