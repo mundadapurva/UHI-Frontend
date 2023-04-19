@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:landing_page/design/widgets/uhi_intro_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'design/pages/login_page.dart';
 import 'design/widgets/uhi_book_appointment.dart';
 import 'design/widgets/uhi_chemist_register.dart';
