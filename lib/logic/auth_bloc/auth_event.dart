@@ -38,9 +38,9 @@ class AuthRegisterDoctorEvent extends AuthEvent {
   final String name;
   final String phone;
   final String address;
-  final String dob;
   final String specialization;
   final String hospital;
+  final String qualification;
 
   AuthRegisterDoctorEvent({
     required this.email,
@@ -49,9 +49,9 @@ class AuthRegisterDoctorEvent extends AuthEvent {
     required this.name,
     required this.phone,
     required this.address,
-    required this.dob,
     required this.specialization,
     required this.hospital,
+    required this.qualification,
   });
 }
 

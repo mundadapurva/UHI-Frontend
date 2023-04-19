@@ -10,11 +10,11 @@ class AuthLoading extends AuthState {}
 
 class AuthSuccess extends AuthState {
   final String message;
-  final String userId;
+  final String id;
 
   AuthSuccess({
     required this.message,
-    required this.userId,
+    required this.id,
   });
 }
 

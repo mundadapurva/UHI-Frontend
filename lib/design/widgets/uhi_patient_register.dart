@@ -23,6 +23,8 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _dobController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,11 +33,13 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
         // TODO: implement listener
         if (state is AuthSuccess) {
           Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (context) => MyHomePage(
-                        userId: state.userId,
-                      )));
+            context,
+            MaterialPageRoute(
+              builder: (context) => MyHomePage(
+                userId: state.id,
+              ),
+            ),
+          );
         } else if (state is AuthFailure) {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -279,6 +283,7 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                       }
                       return null;
                     },
+                    controller: _confirmPasswordController,
                     maxLength: 12,
                     obscureText: true,
                     decoration: const InputDecoration(
@@ -301,24 +306,28 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                           ),
                         ),
                         onPressed: () {
-                          // if (_formKey.currentState!.validate()) {
-                          //   ScaffoldMessenger.of(context).showSnackBar(
-                          //     const SnackBar(
-                          //       content: Text('Processing Data'),
-                          //     ),
-                          //   );
-                          // }
-                          log('Register button pressed');
-                          BlocProvider.of<AuthBloc>(context)
-                              .add(AuthRegisterEvent(
-                            name: _nameController.text,
-                            phone: _phoneController.text,
-                            email: _emailController.text,
-                            aadhar: _aadharController.text,
-                            address: _addressController.text,
-                            password: _passwordController.text,
-                            dob: _dobController.text,
-                          ));
+                          if (_formKey.currentState!.validate()) {
+                            if (_passwordController.text ==
+                                _confirmPasswordController.text) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Processing Data'),
+                                ),
+                              );
+
+                              log('Register button pressed');
+                              BlocProvider.of<AuthBloc>(context)
+                                  .add(AuthRegisterEvent(
+                                name: _nameController.text,
+                                phone: _phoneController.text,
+                                email: _emailController.text,
+                                aadhar: _aadharController.text,
+                                address: _addressController.text,
+                                password: _passwordController.text,
+                                dob: _dobController.text,
+                              ));
+                            }
+                          }
                         },
                         child: const Text(
                           'REGISTER',

@@ -15,7 +15,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       // TODO: implement event handler
     });
 
-
     on<AuthRegisterEvent>((event, emit) async {
       final url = Uri.parse('http://localhost:3000/users');
 
@@ -31,7 +30,6 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           'email': event.email,
           'password': event.password,
         });
-        log(response.body);
         final parsed = await jsonDecode(response.body) as Map<String, dynamic>;
         log(parsed.toString());
         log(parsed['userId']);
@@ -39,7 +37,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
         prefs.setString('id', parsed['userId']);
         if (response.statusCode == 200) {
-          emit(AuthSuccess(message: "Registration successful", userId: parsed['userId']));
+          emit(AuthSuccess(
+              message: "Registration successful", id: parsed['userId']));
         } else {
           emit(AuthFailure(message: 'Registration failed'));
         }
@@ -48,6 +47,40 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       }
     });
 
-    
+    on<AuthRegisterDoctorEvent>(((event, emit) async {
+      final url = Uri.parse('http://localhost:3000/doctors');
+
+      emit(AuthLoading());
+      try {
+        // await Future.delayed(const Duration(seconds: 4));
+
+        final response = await http.post(url, body: {
+          'doctorLicId': event.license,
+          'firstName': event.name,
+          'phone': event.phone,
+          'address': event.address,
+          'email': event.email,
+          'password': event.password,
+          'specialization': event.specialization,
+          'hospital': event.hospital,
+          'qualification': event.qualification,
+        });
+        log(response.body);
+        final parsed = await jsonDecode(response.body) as Map<String, dynamic>;
+        log(parsed.toString());
+        final id = parsed['doctorLicId'];
+
+        final SharedPreferences prefs = await SharedPreferences.getInstance();
+
+        prefs.setString('id', id);
+        if (response.statusCode == 200) {
+          emit(AuthSuccess(id: id, message: parsed['message']));
+        } else {
+          emit(AuthFailure(message: 'Registration failed'));
+        }
+      } catch (e) {
+        emit(AuthFailure(message: 'Registration failed'));
+      }
+    }));
   }
 }
