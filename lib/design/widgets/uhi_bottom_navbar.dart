@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import 'uhi_book_appointment.dart';
+import 'uhi_chemist_register.dart';
+import 'uhi_doctor_register.dart';
+
 class UhiBottomNavbar extends StatelessWidget {
   const UhiBottomNavbar({super.key});
 

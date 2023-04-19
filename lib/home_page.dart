@@ -7,9 +7,9 @@ import 'design/widgets/uhi_bottom_navbar.dart';
 import 'design/widgets/uhi_drawer.dart';
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.userId});
 
-  final String title;
+  final String userId;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();

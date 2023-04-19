@@ -42,6 +42,11 @@ dependencies:
   qr_flutter: ^4.0.0
   qrscan:
   permission_handler: 
+  bloc: ^8.1.1
+  http: ^0.13.5
+  flutter_bloc: ^8.1.2
+  shared_preferences: ^2.1.0
+  flutter_login: ^4.1.1
 
 dev_dependencies:
   flutter_test:
