@@ -32,10 +32,13 @@ class _UhiQRScannerState extends State<UhiQRScanner> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(result), // scanned result will be shown
+            Text(
+              result,
+              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+            ), // scanned result will be shown
             // Expanded(child: Column()),
             const SizedBox(
-              height: 20,
+              height: 15,
             ),
             ElevatedButton(
               onPressed: () {
@@ -45,7 +48,6 @@ class _UhiQRScannerState extends State<UhiQRScanner> {
                 padding: const EdgeInsets.all(10),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(4),
-                  
                 ),
               ),
               child: const Text('SCAN QR'),
