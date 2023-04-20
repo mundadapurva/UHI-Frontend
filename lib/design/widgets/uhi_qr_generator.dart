@@ -1,3 +1,4 @@
+
 import 'dart:convert';
 import 'dart:developer';
 
@@ -20,6 +21,7 @@ class UhiQRGenerator extends StatefulWidget {
 }
 
 class _UhiQRGeneratorState extends State<UhiQRGenerator> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,6 +63,7 @@ class _UhiQRGeneratorState extends State<UhiQRGenerator> {
 
   Widget buildTextField(BuildContext context) => TextField(
         // controller: controller,
+
         style: const TextStyle(fontSize: 24),
         decoration: InputDecoration(
           hintText: 'Enter a message',

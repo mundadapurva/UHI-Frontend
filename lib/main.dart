@@ -14,7 +14,9 @@ import 'design/widgets/uhi_chemist_register.dart';
 import 'home_page.dart';
 import 'logic/auth_bloc/auth_bloc.dart';
 
+
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
     [
@@ -62,6 +64,7 @@ class MyApp extends StatelessWidget {
 
         // home: UhiAddPrescription(),
       ),
+
     );
   }
 }
