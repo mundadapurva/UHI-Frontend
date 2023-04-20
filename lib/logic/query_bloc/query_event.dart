@@ -47,3 +47,26 @@ class AddMedicalHistoryQueryEvent extends QueryEvent {
     required this.remedies,
   });
 }
+
+class BookAppointmentQueryEvent extends QueryEvent {
+  final String userId;
+  final String doctorId;
+  final String date;
+  final String time;
+  final String hospitalId;
+  final String category;
+  final String contact;
+  final bool needAmbulance;
+  final String? address;
+  BookAppointmentQueryEvent({
+    required this.userId,
+    required this.doctorId,
+    required this.date,
+    required this.time,
+    required this.hospitalId,
+    required this.category,
+    required this.contact,
+    required this.needAmbulance,
+    this.address,
+  });
+}

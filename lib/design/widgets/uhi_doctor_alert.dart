@@ -58,6 +58,7 @@ class UhiDoctorAlert extends StatelessWidget {
                       userId: userJson["id"],
                       userName: userJson["name"],
                     ),
+
                   ),
                 );
               },

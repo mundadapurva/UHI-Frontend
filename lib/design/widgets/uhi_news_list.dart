@@ -2,32 +2,38 @@ import 'package:flutter/material.dart';
 
 class UhiNewsList extends StatelessWidget {
   UhiNewsList({super.key});
-  List<int> n = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  List<int> n = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+
+  List<String> news = [
+    'India on Thursday reports over 12,500 new COVID-19 cases as infections see 20% jump',
+    'Amid a rise in COVID-19 cases, the Kerala government made masks mandatory for elderly people and pregnant women',
+    'Amid a surge in H3N2 and COVID-19 cases, investing in a robust health insurance plan can protect you against rising medical costs',
+    'Conjunctivitis is reportedly among the newer Covid-19 symptoms of the Omicron subvariant XBB.1.16'
+  ];
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        for (var i in n)
+        for (var i = 0; i < 4; i++)
           Card(
             elevation: 4,
             child: SingleChildScrollView(
               child: Container(
-                height: 70,
-                margin: const EdgeInsets.all(3),
-                padding: const EdgeInsets.all(8),
+                margin: const EdgeInsets.all(8),
+                height: 85,
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(8),
                 ),
-                child: Column(
-                  children: const [
-                    Text(
-                      'Lorem Ipsum Dolor Sit Amet Consectetur Adipiscing Elit Sed Do Eiusmod Tempor Incididunt Ut Labore Et Dolore Magna Aliqua Ut Enim Ad Minim Veniam, Quis Nostrud Exercitation Ullamco Laboris Nisi Ut Aliquip Ex Ea Commodo Consequat Duis Aute Irure Dolor In Reprehenderit In Voluptate Velit Esse Cillum Dolore Eu Fugiat Nulla Pariatur Excepteur Sint Occaecat Cupidatat Non Proident, Sunt In Culpa Qui Officia Deserunt Mollit Anim Id Est Laborum.',
-                      maxLines: 2,
-                      overflow: TextOverflow.ellipsis,
-                      softWrap: false,
-                    ),
-                  ],
+                child: Text(
+                  news[i],
+                  maxLines: 4,
+                  overflow: TextOverflow.ellipsis,
+                  softWrap: false,
+                  style: const TextStyle(
+                      color: Colors.blue,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w600),
                 ),
               ),
             ),

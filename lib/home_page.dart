@@ -6,9 +6,11 @@ import 'package:http/http.dart' as http;
 
 import 'package:landing_page/design/widgets/uhi_book_appointment.dart';
 import 'package:landing_page/design/widgets/uhi_doctor_dashboard.dart';
+
 import 'package:landing_page/design/widgets/uhi_qr_generator.dart';
 import 'package:landing_page/design/widgets/uhi_qr_scanner.dart';
 import 'package:landing_page/utils/get_auth_token.dart';
+
 
 import 'design/widgets/uhi_bottom_navbar.dart';
 
@@ -25,6 +27,7 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       appBar: AppBar(
         title: const Text('Unified Healthcare Interface',
@@ -90,5 +93,6 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: const UhiBottomNavbar(),
     );
     // return UhiDoctorDashboard();
+
   }
 }
