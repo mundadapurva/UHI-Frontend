@@ -13,3 +13,10 @@ Future<String?> getUserID() async {
 
   return token;
 }
+
+Future<String?> getUserName() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  String? name = prefs.getString('name');
+
+  return name;
+}
