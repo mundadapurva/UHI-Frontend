@@ -1,16 +1,22 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
 import 'package:landing_page/design/widgets/uhi_add_prescription.dart';
+
+import '../pages/uhi_add_medical_history.dart';
 
 class UhiDoctorAlert extends StatelessWidget {
   final String content;
   final String title;
   final Function onPressed;
+  var userJson;
 
-  const UhiDoctorAlert({
+  UhiDoctorAlert({
     Key? key,
     required this.content,
     required this.title,
     required this.onPressed,
+    required this.userJson,
   }) : super(key: key);
 
   @override
@@ -30,7 +36,11 @@ class UhiDoctorAlert extends StatelessWidget {
             ElevatedButton(
               style: const ButtonStyle(alignment: Alignment.center),
               onPressed: () {
-                Navigator.of(context).pop();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const UhiAddMedicalHistory(),
+                    ));
               },
               child: const Text('Add/View Medical History',
                   textAlign: TextAlign.center),
@@ -42,9 +52,9 @@ class UhiDoctorAlert extends StatelessWidget {
                 // Navigator.of(context).pop();
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => const UhiAddPrescription(
-                      userId: '',
-                      userName: '',
+                    builder: (context) => UhiAddPrescription(
+                      userId: userJson["id"],
+                      userName: userJson["name"],
                     ),
 
                   ),

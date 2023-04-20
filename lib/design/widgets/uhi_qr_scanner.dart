@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -20,7 +21,8 @@ class _UhiQRScannerState extends State<UhiQRScanner> {
     if (barcode == null) {
       print('Oh snap, nothing was scanned!');
     } else {
-      setState(() => result = barcode);
+      final userJson = barcode;
+      print(userJson);
       showDialog(
         context: context,
         builder: (context) => UhiDoctorAlert(
@@ -29,6 +31,7 @@ class _UhiQRScannerState extends State<UhiQRScanner> {
           onPressed: () {
             log('Add or View Patient\'s Medical Details');
           },
+          userJson: json.decode(userJson),
         ),
       );
     }

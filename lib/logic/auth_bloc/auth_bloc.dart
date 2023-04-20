@@ -38,6 +38,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final SharedPreferences prefs = await SharedPreferences.getInstance();
 
         prefs.setString('id', parsed['userId']);
+        prefs.setString('name', event.name);
+
         if (response.statusCode == 200) {
           emit(AuthSuccess(
             message: "Registration successful",
@@ -59,7 +61,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthLoading());
         try {
           // await Future.delayed(const Duration(seconds: 4));
-
+          print(url.toString());
           final response = await http.post(url, body: {
             'doctorLicId': event.license,
             'firstName': event.name,
@@ -71,15 +73,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             'hospital': event.hospital,
             'qualification': event.qualification,
           });
-          log(response.body);
+          print(response.body);
           final parsed =
               await jsonDecode(response.body) as Map<String, dynamic>;
-          log(parsed.toString());
+          print(parsed.toString());
           final id = parsed['doctorLicId'];
 
           final SharedPreferences prefs = await SharedPreferences.getInstance();
 
           prefs.setString('id', id);
+          prefs.setString('name', event.name);
+
           if (response.statusCode == 200) {
             emit(AuthSuccess(
                 id: id, message: parsed['message'], type: 'doctor'));
@@ -87,7 +91,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             emit(AuthFailure(message: 'Registration failed'));
           }
         } catch (e) {
-          log(e.toString());
+          print(e.toString());
           emit(AuthFailure(message: 'Registration failed'));
         }
       }),
@@ -121,6 +125,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
           final SharedPreferences prefs = await SharedPreferences.getInstance();
 
           prefs.setString('id', id);
+          prefs.setString('name', event.name);
+
           if (response.statusCode == 200) {
             emit(AuthSuccess(
                 id: id, message: parsed['message'], type: 'chemist'));
