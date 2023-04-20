@@ -12,6 +12,7 @@ class UhiIntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       body: PageView(
         children: [
@@ -180,6 +181,7 @@ class UhiIntroScreen extends StatelessWidget {
                         fontSize: 20,
                         color: Colors.blue,
                         fontWeight: FontWeight.w600,
+
                       ),
                     ),
                   ),

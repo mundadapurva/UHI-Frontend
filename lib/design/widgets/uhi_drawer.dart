@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:landing_page/design/pages/uhi_get_chemists.dart';
+import 'package:landing_page/home_page.dart';
+
+import '../pages/user_medical_history.dart';
 
 class UhiDrawer extends StatelessWidget {
   const UhiDrawer({super.key});
@@ -32,7 +36,12 @@ class UhiDrawer extends StatelessWidget {
               leading: const Icon(Icons.person, color: Colors.blue),
               title: const Text('Profile'),
               onTap: () {
-                Navigator.of(context).pop();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const MyHomePage(),
+                  ),
+                );
               },
             ),
           ),
@@ -42,7 +51,11 @@ class UhiDrawer extends StatelessWidget {
               leading: const Icon(Icons.history_outlined, color: Colors.blue),
               title: const Text('History'),
               onTap: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => const UserMedicalHistory(),
+                  ),
+                );
               },
             ),
           ),
@@ -53,7 +66,11 @@ class UhiDrawer extends StatelessWidget {
                   const Icon(Icons.medication_outlined, color: Colors.blue),
               title: const Text('Chemist'),
               onTap: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => const UhiShowChemists(),
+                  ),
+                );
               },
             ),
           ),

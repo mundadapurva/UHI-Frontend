@@ -1,3 +1,4 @@
+
 import 'dart:convert';
 import 'dart:developer';
 
@@ -20,6 +21,7 @@ class UhiQRGenerator extends StatefulWidget {
 }
 
 class _UhiQRGeneratorState extends State<UhiQRGenerator> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +48,9 @@ class _UhiQRGeneratorState extends State<UhiQRGenerator> {
             const SizedBox(height: 20),
             QrImage(
               data: jsonEncode({
-                widget.id,
-                widget.name,
-              }),
+                'id': widget.id,
+                'name': widget.name
+              }).toString(),
               size: 200,
             ),
             // const SizedBox(height: 40),
@@ -61,6 +63,7 @@ class _UhiQRGeneratorState extends State<UhiQRGenerator> {
 
   Widget buildTextField(BuildContext context) => TextField(
         // controller: controller,
+
         style: const TextStyle(fontSize: 24),
         decoration: InputDecoration(
           hintText: 'Enter a message',

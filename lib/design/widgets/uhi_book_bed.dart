@@ -1,3 +1,4 @@
+
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'package:landing_page/design/widgets/uhi_bottom_navbar.dart';
 import 'package:landing_page/logic/query_bloc/query_bloc.dart';
 import 'package:landing_page/logic/search_delegate/hospital_search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 class UhiBookBed extends StatefulWidget {
   const UhiBookBed({super.key});
@@ -19,6 +21,7 @@ class _UhiBookBedState extends State<UhiBookBed> {
 
   final _contactController = TextEditingController();
   final _addressController = TextEditingController();
+
 
   String dropdownvalue = 'GENERAL';
 
@@ -130,11 +133,13 @@ class _UhiBookBedState extends State<UhiBookBed> {
                 const SizedBox(height: 15),
                 const Text(
                   'CONTACT',
+
                   style: TextStyle(
                     fontSize: 13,
                     fontWeight: FontWeight.w600,
                   ),
                 ),
+
                 TextFormField(
                   validator: (value) {
                     if (value!.isEmpty) {
@@ -246,6 +251,7 @@ class _UhiBookBedState extends State<UhiBookBed> {
               ],
             ),
           ),
+
         ),
       ),
     );
