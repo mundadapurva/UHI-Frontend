@@ -2,9 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 
 final List<String> imgList = [
-  'https://blog.gratefulness.me/content/images/2021/07/April-28-Quote.jpg',
-  'https://blog.gratefulness.me/content/images/2021/07/April-27-Quote.jpg',
-  'https://wow4u.com/wp-content/uploads/1health.jpg',
+  'assets/images/Quote1.png',
+  'assets/images/Quote2.png',
+  'assets/images/Quote3.png',
 ];
 
 class UhiCarousel extends StatelessWidget {
@@ -20,7 +20,7 @@ class UhiCarousel extends StatelessWidget {
         CarouselSlider(
           items: imgList
               .map((item) => Center(
-                    child: Image.network(
+                    child: Image.asset(
                       item,
                       fit: BoxFit.cover,
                       width: 1000,
