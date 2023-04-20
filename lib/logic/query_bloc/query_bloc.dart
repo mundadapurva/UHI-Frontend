@@ -19,14 +19,12 @@ class QueryBloc extends Bloc<QueryEvent, QueryState> {
     });
 
     on<BookBedQueryEvent>((event, emit) async {
-      final url =
-          Uri.parse('http://localhost:3000/users/${event.userId}/bookBed');
+      final url = Uri.parse('${BaseUrl.baseUrl}/users/${event.userId}/bookBed');
       emit(QueryLoading());
       final token = await getAuthToken();
       try {
         log('before response');
         log(url.toString());
-        log(token.toString());
         final body = {
           'hospitalId': event.hospitalId,
           'category': event.category,
@@ -41,13 +39,7 @@ class QueryBloc extends Bloc<QueryEvent, QueryState> {
             'authorization': 'Bearer $token',
             "Content-Type": "application/json"
           },
-          body: json.encode({
-            'hospitalId': event.hospitalId,
-            'category': event.category,
-            'contact': event.contact,
-            'needAmbulance': event.needAmbulance,
-            'address': event.address
-          }.toString()),
+          body: json.encode(body),
         );
         log('after response');
 
