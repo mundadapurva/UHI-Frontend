@@ -16,6 +16,7 @@ class UhiBookBed extends StatefulWidget {
 
 class _UhiBookBedState extends State<UhiBookBed> {
   final TextEditingController _searchController = TextEditingController();
+
   final _contactController = TextEditingController();
   final _addressController = TextEditingController();
 
@@ -34,6 +35,7 @@ class _UhiBookBedState extends State<UhiBookBed> {
     'OTHERS',
   ];
   bool isChecked = false;
+
   String hospitalId = '';
 
   final _formKey = GlobalKey<FormState>();

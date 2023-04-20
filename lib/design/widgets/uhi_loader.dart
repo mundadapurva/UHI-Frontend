@@ -13,8 +13,8 @@ class UhiLoader extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
           Image(
-            image: NetworkImage(
-              'https://www.maxhealthcare.in/img/loader-rolling.gif',
+            image: AssetImage(
+              'assets/images/loader-rolling.gif',
             ),
             height: 150,
             width: 150,

@@ -11,20 +11,29 @@ class UhiIntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        children: [
-          Container(
-            padding: const EdgeInsets.all(8),
-            color: Colors.blue,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.network(
-                  'https://cdni.iconscout.com/illustration/premium/thumb/health-app-4472592-3742537.png',
-                  fit: BoxFit.fitHeight,
-                  width: double.infinity,
+    return PageView(
+      children: [
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colors.blue,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Image.asset(
+                'assets/images/IntroScreen2.png',
+                fit: BoxFit.fitHeight,
+                width: double.infinity,
+              ),
+              const SizedBox(
+                height: 30,
+              ),
+              const Text(
+                'Welcome to',
+                style: TextStyle(
+                  fontSize: 27,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
                 const SizedBox(
                   height: 30,
@@ -70,17 +79,32 @@ class UhiIntroScreen extends StatelessWidget {
               ],
             ),
           ),
-          Container(
-            padding: const EdgeInsets.all(8),
-            color: Colors.blue,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Image.network(
-                  'https://qmed.asia/newLanding/img/homecare/virtualcare/Virtual%20Care%20How%20To%201.png',
-                  fit: BoxFit.fitHeight,
-                  width: double.infinity,
+        ),
+        Container(
+          padding: const EdgeInsets.all(8),
+          color: Colors.blue,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 40,
+              ),
+              Image.asset(
+                'assets/images/Reception.png',
+                fit: BoxFit.fitHeight,
+                width: double.infinity,
+                height: 250,
+              ),
+              const SizedBox(
+                height: 50,
+              ),
+              const Text(
+                'Get Started?',
+                style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
                 ),
                 const SizedBox(
                   height: 50,

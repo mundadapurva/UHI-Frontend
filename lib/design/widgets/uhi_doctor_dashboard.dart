@@ -50,8 +50,7 @@ class UhiDoctorDashboard extends StatelessWidget {
         actions: const [
           CircleAvatar(
             radius: 21,
-            backgroundImage: NetworkImage(
-                'https://cdn4.iconfinder.com/data/icons/avatars-21/512/avatar-circle-human-male-3-512.png'),
+            backgroundImage: AssetImage('assets/images/Avatar.png'),
           ),
           SizedBox(width: 10),
         ],

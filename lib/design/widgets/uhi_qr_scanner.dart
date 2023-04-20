@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:landing_page/design/widgets/uhi_doctor_alert.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:qrscan/qrscan.dart' as scanner;
 
@@ -20,7 +21,16 @@ class _UhiQRScannerState extends State<UhiQRScanner> {
       print('Oh snap, nothing was scanned!');
     } else {
       setState(() => result = barcode);
-      log(barcode);
+      showDialog(
+        context: context,
+        builder: (context) => UhiDoctorAlert(
+          title: 'Patient Details',
+          content: "Add or View Patient's Medical Details",
+          onPressed: () {
+            log('Add or View Patient\'s Medical Details');
+          },
+        ),
+      );
     }
   }
 
@@ -32,14 +42,14 @@ class _UhiQRScannerState extends State<UhiQRScanner> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(
-              result,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
-            ), // scanned result will be shown
+            // Text(
+            //   result,
+            //   style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w600),
+            // ), // scanned result will be shown
             // Expanded(child: Column()),
-            const SizedBox(
-              height: 15,
-            ),
+            // const SizedBox(
+            //   height: 10,
+            // ),
             ElevatedButton(
               onPressed: () {
                 _scan();
@@ -50,7 +60,7 @@ class _UhiQRScannerState extends State<UhiQRScanner> {
                   borderRadius: BorderRadius.circular(4),
                 ),
               ),
-              child: const Text('SCAN QR'),
+              child: const Text('Scan QR', style: TextStyle(fontSize: 17)),
             )
           ],
         ),

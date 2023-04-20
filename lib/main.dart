@@ -2,7 +2,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import 'package:landing_page/design/widgets/uhi_intro_screen.dart';
 import 'package:landing_page/logic/query_bloc/query_bloc.dart';
 import 'package:landing_page/uhi_local_auth.dart';
