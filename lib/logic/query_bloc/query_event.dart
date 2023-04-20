@@ -30,6 +30,24 @@ class AddPrescriptionQueryEvent extends QueryEvent {
   });
 }
 
+class AddMedicalHistoryQueryEvent extends QueryEvent {
+  final String userId;
+  final String name;
+  final String symptoms;
+  final String diagnosis;
+  final String fees;
+  final String remedies;
+
+  AddMedicalHistoryQueryEvent({
+    required this.userId,
+    required this.name,
+    required this.symptoms,
+    required this.diagnosis,
+    required this.fees,
+    required this.remedies,
+  });
+}
+
 class BookAppointmentQueryEvent extends QueryEvent {
   final String userId;
   final String doctorId;
