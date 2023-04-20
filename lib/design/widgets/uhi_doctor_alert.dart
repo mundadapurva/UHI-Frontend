@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:landing_page/design/widgets/uhi_add_prescription.dart';
 
 class UhiDoctorAlert extends StatelessWidget {
   final String content;
@@ -38,7 +39,12 @@ class UhiDoctorAlert extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 onPressed();
-                Navigator.of(context).pop();
+                // Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const UhiAddPrescription(),
+                  ),
+                );
               },
               child:
                   const Text('Add Prescription', textAlign: TextAlign.center),
