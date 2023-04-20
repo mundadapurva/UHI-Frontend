@@ -20,7 +20,7 @@ class UhiNewsList extends StatelessWidget {
             child: SingleChildScrollView(
               child: Container(
                 margin: const EdgeInsets.all(8),
-                height: 80,
+                height: 85,
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(8),
