@@ -37,7 +37,10 @@ class QueryBloc extends Bloc<QueryEvent, QueryState> {
         log(jsonEncode(body));
         final response = await http.post(
           url,
-          headers: {'authorization': 'Bearer $token'},
+          headers: {
+            'authorization': 'Bearer $token',
+            "Content-Type": "application/json"
+          },
           body: json.encode({
             'hospitalId': event.hospitalId,
             'category': event.category,
@@ -66,34 +69,86 @@ class QueryBloc extends Bloc<QueryEvent, QueryState> {
         const api = '$baseUrl/doctors/addPrescription';
         final url = Uri.parse(api);
 
-        final list = event.prescriptions;
+        final listOfPrescription = event.prescriptions;
         emit(QueryLoading());
         final token = await getAuthToken();
         final docId = await getUserID();
         try {
-          log('before response');
-          log(url.toString());
-          log(token.toString());
+          print('before response');
+          print(url.toString());
+          print(token.toString());
 
           final body = {
             "aadhar": event.userId,
             "createdBy": docId,
-            "medicinesSuggested": [
-              {
-                "name": "cccccccccc",
-                "price": "84",
-                "timeToConsume": "111",
-                "qty": "1"
-              },
-              {
-                "name": "ddddddddddd",
-                "price": "100",
-                "timeToConsume": "100",
-                "qty": "10"
-              }
-            ]
+            "medicinesSuggested": listOfPrescription
           };
+
+          print(jsonEncode(body));
+          final response = await http.post(url,
+              headers: {
+                'authorization': 'Bearer $token'
+                // "Content-Type": "application/json"
+              },
+              body: body);
+          final parsed = jsonDecode(response.body);
+          if (response.statusCode == 200) {
+            emit(QuerySuccess(message: parsed['message']));
+          } else {
+            emit(QueryFailure(message: parsed['message']));
+          }
         } catch (e) {
+          print(e.toString());
+          emit(QueryFailure(message: e.toString()));
+        }
+      },
+    );
+
+    on<AddMedicalHistoryQueryEvent>(
+      (event, emit) async {
+        const baseUrl = BaseUrl.baseUrl;
+
+        emit(QueryLoading());
+        final token = await getAuthToken();
+        final doctorId = await getUserID();
+        final doctorName = await getUserName();
+
+        String api = '$baseUrl/doctors/$doctorId/updateMedicalRecord';
+        final url = Uri.parse(api);
+        print(url);
+        try {
+          print('before response');
+          print(url.toString());
+          print(token.toString());
+
+          final body = {
+            "userId": event.userId,
+            "symptoms": event.symptoms,
+            "diagnosis": event.diagnosis,
+            "totalFees": event.fees,
+            // "aliment": "Medicines",
+            "suggestedRemedy": event.remedies,
+            "doctorName": doctorName,
+          };
+
+          print(jsonEncode(body));
+          final response = await http.put(
+            url,
+            headers: {
+              'authorization': 'Bearer $token',
+              'Content-Type': 'application/json'
+            },
+            body: json.encode(body),
+          );
+          print(response.statusCode);
+          final parsed = jsonDecode(response.body);
+          if (response.statusCode == 200) {
+            emit(QuerySuccess(message: parsed['message']));
+          } else {
+            emit(QueryFailure(message: parsed['message']));
+          }
+        } catch (e) {
+          print(e.toString());
           emit(QueryFailure(message: e.toString()));
         }
       },

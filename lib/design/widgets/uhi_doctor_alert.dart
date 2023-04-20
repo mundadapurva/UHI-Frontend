@@ -39,7 +39,9 @@ class UhiDoctorAlert extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const UhiAddMedicalHistory(),
+                      builder: (context) =>  UhiAddMedicalHistory(
+                        userId: userJson["id"],
+                      ),
                     ));
               },
               child: const Text('Add/View Medical History',

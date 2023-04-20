@@ -3,8 +3,8 @@ import 'package:landing_page/design/widgets/uhi_bottom_sheet.dart';
 import 'package:landing_page/design/widgets/uhi_medical_history_list.dart';
 
 class UhiAddMedicalHistory extends StatefulWidget {
-  const UhiAddMedicalHistory({super.key});
-
+  const UhiAddMedicalHistory({super.key, required this.userId});
+  final String userId;
   @override
   State<UhiAddMedicalHistory> createState() => _UhiAddMedicalHistoryState();
 }
@@ -43,7 +43,7 @@ class _UhiAddMedicalHistoryState extends State<UhiAddMedicalHistory> {
                           top: Radius.circular(25.0),
                         ),
                       ),
-                      builder: (context) => UhiBottomSheet(),
+                      builder: (context) => UhiBottomSheet(userId: widget.userId,),
                     );
                   },
                   child: const Text('Add Medical History'),
