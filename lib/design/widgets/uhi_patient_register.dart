@@ -33,7 +33,7 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
       listener: (context, state) {
         // TODO: implement listener
         if (state is AuthSuccess) {
-          Navigator.push(
+          Navigator.pushReplacement(
             context,
             MaterialPageRoute(
               builder: (context) => LoginPage(

@@ -6,6 +6,8 @@ import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../utils/config.dart';
+
 part 'auth_event.dart';
 part 'auth_state.dart';
 
@@ -16,7 +18,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     });
 
     on<AuthRegisterEvent>((event, emit) async {
-      final url = Uri.parse('http://localhost:3000/users');
+      final url = Uri.parse('${BaseUrl.baseUrl}/users');
 
       emit(AuthLoading());
       try {
@@ -52,7 +54,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<AuthRegisterDoctorEvent>(
       ((event, emit) async {
-        final url = Uri.parse('http://localhost:3000/doctors');
+        final url = Uri.parse('${BaseUrl.baseUrl}/doctors');
 
         emit(AuthLoading());
         try {
@@ -79,11 +81,13 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
           prefs.setString('id', id);
           if (response.statusCode == 200) {
-            emit(AuthSuccess(id: id, message: parsed['message'], type: 'doctor'));
+            emit(AuthSuccess(
+                id: id, message: parsed['message'], type: 'doctor'));
           } else {
             emit(AuthFailure(message: 'Registration failed'));
           }
         } catch (e) {
+          log(e.toString());
           emit(AuthFailure(message: 'Registration failed'));
         }
       }),
@@ -91,7 +95,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     on<AuthRegisterChemistEvent>(
       (event, emit) async {
-        final url = Uri.parse('http://localhost:3000/chemist');
+        final url = Uri.parse('${BaseUrl.baseUrl}/chemist');
 
         emit(AuthLoading());
         try {
@@ -119,7 +123,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
           prefs.setString('id', id);
           if (response.statusCode == 200) {
-            emit(AuthSuccess(id: id, message: parsed['message'], type: 'chemist'));
+            emit(AuthSuccess(
+                id: id, message: parsed['message'], type: 'chemist'));
           } else {
             emit(AuthFailure(message: 'Registration failed'));
           }
@@ -134,11 +139,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       (event, emit) async {
         final Uri url;
         if (event.type == 'user') {
-          url = Uri.parse('http://localhost:3000/users/login');
+          url = Uri.parse('${BaseUrl.baseUrl}/users/login');
         } else if (event.type == 'doctor') {
-          url = Uri.parse('http://localhost:3000/doctors/login');
+          url = Uri.parse('${BaseUrl.baseUrl}/doctors/login');
         } else {
-          url = Uri.parse('http://localhost:3000/chemist/login');
+          url = Uri.parse('${BaseUrl.baseUrl}/chemist/login');
         }
 
         emit(AuthLoading());

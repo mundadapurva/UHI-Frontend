@@ -1,11 +1,19 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+
 import 'package:landing_page/design/widgets/uhi_book_appointment.dart';
 import 'package:landing_page/design/widgets/uhi_doctor_dashboard.dart';
+import 'package:landing_page/design/widgets/uhi_qr_generator.dart';
 import 'package:landing_page/design/widgets/uhi_qr_scanner.dart';
+import 'package:landing_page/utils/get_auth_token.dart';
 
 import 'design/widgets/uhi_bottom_navbar.dart';
 
 import 'design/widgets/uhi_drawer.dart';
+import 'utils/config.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -29,11 +37,42 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
         // leading: const Icon(Icons.menu),
-        actions: const [
-          CircleAvatar(
-            radius: 21,
-            backgroundImage: NetworkImage(
-                'https://cdn4.iconfinder.com/data/icons/avatars-21/512/avatar-circle-human-male-3-512.png'),
+        actions: [
+          GestureDetector(
+            child: const CircleAvatar(
+              radius: 21,
+              backgroundImage: NetworkImage(
+                  'https://cdn4.iconfinder.com/data/icons/avatars-21/512/avatar-circle-human-male-3-512.png'),
+            ),
+            onTap: () async {
+              final id = await getUserID();
+              final token = await getAuthToken();
+
+              final headers = {
+                'authorization': 'Bearer $token',
+              };
+
+              final response = await http.get(
+                Uri.parse('${BaseUrl.baseUrl}/users/$id'),
+                headers: headers,
+              );
+
+              log('${BaseUrl.baseUrl}/users/$id');
+
+              final parsed = jsonDecode(response.body);
+              log(parsed.toString());
+
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => UhiQRGenerator(
+                    id: id!,
+                    name: parsed['firstName'],
+                    email: parsed['email'],
+                  ),
+                ),
+              );
+            },
           ),
           SizedBox(width: 10),
         ],
@@ -51,6 +90,5 @@ class _MyHomePageState extends State<MyHomePage> {
       bottomNavigationBar: const UhiBottomNavbar(),
     );
     // return UhiDoctorDashboard();
-
   }
 }

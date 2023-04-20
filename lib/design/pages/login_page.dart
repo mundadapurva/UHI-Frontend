@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_login/flutter_login.dart';
+import 'package:landing_page/design/widgets/uhi_doctor_dashboard.dart';
 import 'package:landing_page/logic/auth_bloc/auth_bloc.dart';
 
 import '../../home_page.dart';
@@ -54,7 +55,7 @@ class LoginPage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) =>
-                      const Placeholder(), // TODO: DoctorHomePage
+                      UhiDoctorDashboard(), // TODO: DoctorHomePage
                 ),
               );
               break;

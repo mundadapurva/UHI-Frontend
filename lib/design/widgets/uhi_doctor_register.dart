@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:landing_page/design/pages/login_page.dart';
 import 'package:landing_page/logic/auth_bloc/auth_bloc.dart';
 
 class UhiDoctorRegister extends StatefulWidget {
@@ -36,6 +37,15 @@ class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
         }
         if (state is AuthSuccess) {
           // TODO: push to home page
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(
+              builder: (context) => LoginPage(
+                type: 'doctor',
+                id: state.id,
+              ), // TODO: DoctorHomePage
+            ),
+          );
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(state.message),

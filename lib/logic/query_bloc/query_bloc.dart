@@ -2,9 +2,11 @@ import 'dart:convert';
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:landing_page/design/widgets/uhi_add_prescription.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 
+import '../../utils/config.dart';
 import '../../utils/get_auth_token.dart';
 
 part 'query_event.dart';
@@ -57,5 +59,44 @@ class QueryBloc extends Bloc<QueryEvent, QueryState> {
         emit(QueryFailure(message: e.toString()));
       }
     });
+
+    on<AddPrescriptionQueryEvent>(
+      (event, emit) async {
+        const baseUrl = BaseUrl.baseUrl;
+        const api = '$baseUrl/doctors/addPrescription';
+        final url = Uri.parse(api);
+
+        final list = event.prescriptions;
+        emit(QueryLoading());
+        final token = await getAuthToken();
+        final docId = await getUserID();
+        try {
+          log('before response');
+          log(url.toString());
+          log(token.toString());
+
+          final body = {
+            "aadhar": event.userId,
+            "createdBy": docId,
+            "medicinesSuggested": [
+              {
+                "name": "cccccccccc",
+                "price": "84",
+                "timeToConsume": "111",
+                "qty": "1"
+              },
+              {
+                "name": "ddddddddddd",
+                "price": "100",
+                "timeToConsume": "100",
+                "qty": "10"
+              }
+            ]
+          };
+        } catch (e) {
+          emit(QueryFailure(message: e.toString()));
+        }
+      },
+    );
   }
 }

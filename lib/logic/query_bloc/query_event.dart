@@ -19,8 +19,13 @@ class BookBedQueryEvent extends QueryEvent {
     required this.needAmbulance,
     this.address,
   });
-  
 }
 
-
-
+class AddPrescriptionQueryEvent extends QueryEvent {
+  final String userId;
+  final List prescriptions;
+  AddPrescriptionQueryEvent({
+    required this.userId,
+    required this.prescriptions,
+  });
+}
