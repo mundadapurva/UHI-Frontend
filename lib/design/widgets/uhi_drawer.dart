@@ -17,8 +17,7 @@ class UhiDrawer extends StatelessWidget {
               children: const [
                 ClipRRect(
                   child: Image(
-                    image: NetworkImage(
-                        'https://elitehealthswfl.org/wp-content/uploads/2018/10/heart-illustration.png'),
+                    image: AssetImage('assets/images/Drawer.png'),
                     height: 120,
                     width: double.infinity,
                     fit: BoxFit.fitHeight,
@@ -30,7 +29,7 @@ class UhiDrawer extends StatelessWidget {
           Card(
             elevation: 2,
             child: ListTile(
-              leading: const Icon(Icons.person),
+              leading: const Icon(Icons.person, color: Colors.blue),
               title: const Text('Profile'),
               onTap: () {
                 Navigator.of(context).pop();
@@ -40,7 +39,7 @@ class UhiDrawer extends StatelessWidget {
           Card(
             elevation: 2,
             child: ListTile(
-              leading: const Icon(Icons.history_outlined),
+              leading: const Icon(Icons.history_outlined, color: Colors.blue),
               title: const Text('History'),
               onTap: () {
                 Navigator.of(context).pop();
@@ -50,7 +49,8 @@ class UhiDrawer extends StatelessWidget {
           Card(
             elevation: 2,
             child: ListTile(
-              leading: const Icon(Icons.medication_outlined),
+              leading:
+                  const Icon(Icons.medication_outlined, color: Colors.blue),
               title: const Text('Chemist'),
               onTap: () {
                 Navigator.of(context).pop();
@@ -60,7 +60,7 @@ class UhiDrawer extends StatelessWidget {
           Card(
             elevation: 2,
             child: ListTile(
-              leading: const Icon(Icons.security_outlined),
+              leading: const Icon(Icons.security_outlined, color: Colors.blue),
               title: const Text('Insurance'),
               onTap: () {
                 Navigator.of(context).pop();
@@ -70,7 +70,7 @@ class UhiDrawer extends StatelessWidget {
           Card(
             elevation: 2,
             child: ListTile(
-              leading: const Icon(Icons.logout),
+              leading: const Icon(Icons.logout, color: Colors.blue),
               title: const Text('Logout'),
               onTap: () {
                 Navigator.of(context).pop();

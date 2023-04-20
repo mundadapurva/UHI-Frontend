@@ -18,8 +18,8 @@ class UhiIntroScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.network(
-                'https://cdni.iconscout.com/illustration/premium/thumb/health-app-4472592-3742537.png',
+              Image.asset(
+                'assets/images/IntroScreen2.png',
                 fit: BoxFit.fitHeight,
                 width: double.infinity,
               ),
@@ -74,10 +74,14 @@ class UhiIntroScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Image.network(
-                'https://qmed.asia/newLanding/img/homecare/virtualcare/Virtual%20Care%20How%20To%201.png',
+              const SizedBox(
+                height: 40,
+              ),
+              Image.asset(
+                'assets/images/Reception.png',
                 fit: BoxFit.fitHeight,
                 width: double.infinity,
+                height: 250,
               ),
               const SizedBox(
                 height: 50,
