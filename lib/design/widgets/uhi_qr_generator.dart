@@ -46,9 +46,9 @@ class _UhiQRGeneratorState extends State<UhiQRGenerator> {
             const SizedBox(height: 20),
             QrImage(
               data: jsonEncode({
-                widget.id,
-                widget.name,
-              }),
+                'id': widget.id,
+                'name': widget.name
+              }).toString(),
               size: 200,
             ),
             // const SizedBox(height: 40),

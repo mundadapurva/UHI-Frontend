@@ -100,12 +100,11 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthLoading());
         try {
           // await Future.delayed(const Duration(seconds: 4));
-          final jsonData = jsonEncode(
-            {
-              'shopName': event.shopName,
-              'address': event.shopAddress,
-            },
-          );
+          final jsonData = {
+            'shopname': event.shopName,
+            'address': event.shopAddress,
+          };
+
           final response = await http.post(url, body: {
             'chemistId': event.license,
             'firstName': event.name,

@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../utils/config.dart';
 import '../../utils/get_auth_token.dart';
 
 Future<List<String>> fetchSpecialties() async {
@@ -70,6 +71,7 @@ class SpecialtySearchDelegate extends SearchDelegate<String> {
                   title: Text(results[index]),
                   onTap: () {
                     close(context, results[index]);
+                    // push to time screen
                   },
                 ),
               );

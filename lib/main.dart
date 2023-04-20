@@ -57,8 +57,8 @@ class MyApp extends StatelessWidget {
         ),
         themeMode: ThemeMode.system,
         // home: LoginPage(type: 'user', id: authToken!),
-        // home: authToken != null ? const MyHomePage() : const UhiIntroScreen(),
-        home: authToken != null ? UhiDoctorDashboard() : const UhiIntroScreen(),
+        home: authToken != null ? const MyHomePage() : const UhiIntroScreen(),
+        // home: authToken != null ? UhiDoctorDashboard() : const UhiIntroScreen(),
 
         // home: UhiAddPrescription(),
       ),
