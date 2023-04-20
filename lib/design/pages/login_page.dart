@@ -35,9 +35,7 @@ class LoginPage extends StatelessWidget {
               Navigator.pushReplacement(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => MyHomePage(
-                    userId: id,
-                  ),
+                  builder: (context) => MyHomePage(),
                 ),
               );
               break;

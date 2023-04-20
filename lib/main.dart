@@ -4,6 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:landing_page/design/widgets/uhi_intro_screen.dart';
+import 'package:landing_page/logic/query_bloc/query_bloc.dart';
+import 'package:landing_page/uhi_local_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'design/pages/login_page.dart';
 import 'design/widgets/uhi_book_appointment.dart';
@@ -34,9 +36,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        // BlocProvider(
-        //   create: (context) => SubjectBloc(),
-        // ),
+        BlocProvider(
+          create: (context) => QueryBloc(),
+        ),
         BlocProvider(
           create: (context) => AuthBloc(),
         ),
@@ -54,7 +56,7 @@ class MyApp extends StatelessWidget {
         ),
         themeMode: ThemeMode.system,
         // home: LoginPage(type: 'user', id: authToken!),
-        home: authToken != null ? MyHomePage(userId: authToken!) : const UhiIntroScreen(),
+        home: authToken != null ? const MyHomePage() : const UhiIntroScreen(),
       ),
     );
   }

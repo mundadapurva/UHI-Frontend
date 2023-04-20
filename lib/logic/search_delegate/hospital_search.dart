@@ -1,29 +1,33 @@
-import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:developer';
 
+import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
 
 import '../../utils/get_auth_token.dart';
 
-Future<List<String>> fetchSpecialties() async {
+Future<Map<String, String>> fetchHospitals() async {
   final token = await getAuthToken();
-
   final headers = {
     'authorization': 'Bearer $token',
   };
-  final response = await http.get(Uri.parse('http://localhost:3000/doctors'),
-      headers: headers);
+
+  final response = await http.get(
+    Uri.parse('http://localhost:3000/hospitals'),
+    headers: headers,
+  );
+
   if (response.statusCode == 200) {
     final parsed = jsonDecode(response.body) as List<dynamic>;
 
-    return parsed.map((e) => e['firstName'].toString()).toList();
+    return {for (var e in parsed) e['_id'].toString(): e['name'].toString()};
   } else {
-    throw Exception('Failed to load specialties');
+    throw Exception('Failed to load hospitals');
   }
 }
 
-class SpecialtySearchDelegate extends SearchDelegate<String> {
+class HospitalSearchDelegate extends SearchDelegate<Map<String, String>> {
   @override
   List<Widget>? buildActions(BuildContext context) {
     return [
@@ -41,7 +45,7 @@ class SpecialtySearchDelegate extends SearchDelegate<String> {
     return IconButton(
       icon: const Icon(Icons.arrow_back),
       onPressed: () {
-        close(context, '');
+        close(context, {});
       },
     );
   }
@@ -55,13 +59,15 @@ class SpecialtySearchDelegate extends SearchDelegate<String> {
 
   @override
   Widget buildSuggestions(BuildContext context) {
-    return FutureBuilder<List<String>>(
-      future: fetchSpecialties(),
+    return FutureBuilder<Map<String, String>>(
+      future: fetchHospitals(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          final results = snapshot.data!
+          final results = snapshot.data!.values
               .where((element) => element.toLowerCase().contains(query))
               .toList();
+          final mp = snapshot.data!;
+
           return ListView.builder(
             itemCount: results.length,
             itemBuilder: (context, index) {
@@ -69,16 +75,23 @@ class SpecialtySearchDelegate extends SearchDelegate<String> {
                 child: ListTile(
                   title: Text(results[index]),
                   onTap: () {
-                    close(context, results[index]);
+                    close(
+                        context,
+                        mp.entries
+                            .where((element) => element.value == results[index])
+                            .map((e) => {e.key: e.value})
+                            .toList()[0]);
+                    // log('Hospital ID: ${mp.keys.firstWhere((element) => mp[element] == results[index])}');
                   },
                 ),
               );
             },
           );
-        } else if (snapshot.hasError) {
-          return const Text('Error');
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
         }
-        return const Center(child: CircularProgressIndicator());
       },
     );
   }

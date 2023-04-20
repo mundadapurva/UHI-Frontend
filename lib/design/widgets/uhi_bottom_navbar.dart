@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:landing_page/design/widgets/uhi_book_bed.dart';
 
 import 'uhi_book_appointment.dart';
 import 'uhi_chemist_register.dart';
@@ -15,7 +16,34 @@ class UhiBottomNavbar extends StatelessWidget {
       selectedItemColor: Colors.blue,
       unselectedFontSize: 13,
       currentIndex: 0,
-      onTap: (index) {},
+      onTap: (index) {
+        switch (index) {
+          case 0:
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const UhiBookAppointment(),
+              ),
+            );
+            break;
+          case 1:
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const UhiChemistRegister(),
+              ),
+            );
+            break;
+          case 2:
+            Navigator.pushReplacement(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const UhiBookBed(),
+              ),
+            );
+            break;
+        }
+      },
       items: const [
         BottomNavigationBarItem(
           icon: Icon(
