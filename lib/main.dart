@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:landing_page/design/widgets/chemist/uhi_chemist_dashboard.dart';
 import 'package:landing_page/design/widgets/uhi_add_prescription.dart';
 import 'package:landing_page/design/widgets/uhi_doctor_dashboard.dart';
 import 'package:landing_page/design/widgets/uhi_intro_screen.dart';
@@ -14,9 +15,7 @@ import 'design/widgets/uhi_chemist_register.dart';
 import 'home_page.dart';
 import 'logic/auth_bloc/auth_bloc.dart';
 
-
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations(
     [
@@ -59,12 +58,13 @@ class MyApp extends StatelessWidget {
         ),
         themeMode: ThemeMode.system,
         // home: LoginPage(type: 'user', id: authToken!),
-        home: authToken != null ? const MyHomePage() : const UhiIntroScreen(),
+        home: authToken != null
+            ? const UhiChemistDashboard()
+            : const UhiIntroScreen(),
         // home: authToken != null ? UhiDoctorDashboard() : const UhiIntroScreen(),
 
         // home: UhiAddPrescription(),
       ),
-
     );
   }
 }

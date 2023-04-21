@@ -48,7 +48,8 @@ dependencies:
   flutter_bloc: ^8.1.2
   shared_preferences: ^2.1.0
   flutter_login: ^4.1.1
-  local_auth: 
+  local_auth:
+  toggle_switch: ^2.0.1 
 
 
 dev_dependencies:

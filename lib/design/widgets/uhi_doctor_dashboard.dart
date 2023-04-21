@@ -82,8 +82,8 @@ class _UhiDoctorDashboardState extends State<UhiDoctorDashboard> {
           children: [
             Container(
               padding: const EdgeInsets.all(8),
-              child: Column(
-                children: const [
+              child: const Column(
+                children: [
                   Text(
                     'Scan QR code to check-in your patient',
                     style: TextStyle(
