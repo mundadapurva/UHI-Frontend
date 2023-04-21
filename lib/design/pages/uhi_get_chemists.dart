@@ -38,8 +38,11 @@ class _UhiShowChemistsState extends State<UhiShowChemists> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      drawer: UhiDrawer(),
+      appBar: AppBar(
+        title: const Text('Chemists Near You'),
+        centerTitle: true,
+      ),
+      drawer: const UhiDrawer(),
       body: FutureBuilder<List>(
         future: fetchChemists(),
         builder: (context, snapshot) {

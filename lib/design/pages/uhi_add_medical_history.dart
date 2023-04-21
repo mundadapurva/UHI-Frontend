@@ -29,7 +29,7 @@ class _UhiAddMedicalHistoryState extends State<UhiAddMedicalHistory> {
                   fontWeight: FontWeight.w600,
                   color: Colors.blue),
             ),
-            UhiMedicalHistoryList(),
+            const UhiMedicalHistoryList(),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

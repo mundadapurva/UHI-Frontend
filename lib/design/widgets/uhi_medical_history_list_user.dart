@@ -30,8 +30,8 @@ Future<List> getMedicalRecord() async {
   }
 }
 
-class UhiMedicalHistoryList extends StatelessWidget {
-  const UhiMedicalHistoryList({super.key});
+class UhiMedicalHistoryListUser extends StatelessWidget {
+  const UhiMedicalHistoryListUser({super.key});
 
   @override
   Widget build(BuildContext context) {

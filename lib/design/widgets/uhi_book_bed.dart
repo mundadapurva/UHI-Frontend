@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:landing_page/design/widgets/uhi_bottom_navbar.dart';
+import 'package:landing_page/design/widgets/uhi_drawer.dart';
 import 'package:landing_page/logic/query_bloc/query_bloc.dart';
 import 'package:landing_page/logic/search_delegate/hospital_search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -59,8 +60,12 @@ class _UhiBookBedState extends State<UhiBookBed> {
         }
       },
       child: Scaffold(
-        appBar: AppBar(),
-        bottomNavigationBar: const UhiBottomNavbar(),
+        appBar: AppBar(
+          title: const Text('Hospital Bed Booking'),
+          centerTitle: true,
+        ),
+        // bottomNavigationBar: const UhiBottomNavbar(),
+        drawer: const UhiDrawer(),
         body: SingleChildScrollView(
           child: Container(
             padding: const EdgeInsets.all(20),

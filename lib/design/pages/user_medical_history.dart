@@ -14,8 +14,8 @@ class UserMedicalHistory extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Medical History'),
       ),
-      drawer: UhiDrawer(),
-      body: UhiMedicalHistoryList(),
+      drawer: const  UhiDrawer(),
+      body: const UhiMedicalHistoryListUser(),
     );
   }
 }

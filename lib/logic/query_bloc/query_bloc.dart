@@ -106,9 +106,10 @@ class QueryBloc extends Bloc<QueryEvent, QueryState> {
         final doctorName = await getUserName();
 
         String api = '$baseUrl/doctors/$doctorId/updateMedicalRecord';
-        final url = Uri.parse(api);
-        print(url);
+
         try {
+          final url = Uri.parse(api);
+          print(url);
           print('before response');
           print(url.toString());
           print(token.toString());
@@ -141,6 +142,50 @@ class QueryBloc extends Bloc<QueryEvent, QueryState> {
           }
         } catch (e) {
           print(e.toString());
+          emit(QueryFailure(message: e.toString()));
+        }
+      },
+    );
+
+    on<BookAppointmentQueryEvent>(
+      (event, emit) async {
+        const baseUrl = BaseUrl.baseUrl;
+
+        emit(QueryLoading());
+        final token = await getAuthToken();
+        final userId = await getUserID();
+        final userName = await getUserName();
+
+        final api = '$baseUrl/users/$userId/bookAppointment';
+
+        try {
+          final url = Uri.parse(api);
+          log(url.toString());
+
+          final body = {
+            "doctorId": event.doctorId,
+            "appointmentTime": event.dateTime.toString(),
+            "userName": userName,
+          };
+
+          log(json.encode(body).toString());
+
+          final response = await http.post(url,
+              headers: {
+                'authorization': 'Bearer $token',
+                'Content-Type': 'application/json'
+              },
+              body: json.encode(body));
+          final parsed = jsonDecode(response.body);
+          log(parsed['message']);
+
+          if (response.statusCode == 200) {
+            emit(QuerySuccess(message: parsed['message']));
+          } else {
+            emit(QueryFailure(message: parsed['message']));
+          }
+        } catch (e) {
+          log(e.toString());
           emit(QueryFailure(message: e.toString()));
         }
       },

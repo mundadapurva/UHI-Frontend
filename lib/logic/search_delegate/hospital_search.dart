@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
 
+import '../../utils/config.dart';
 import '../../utils/get_auth_token.dart';
 
 Future<Map<String, String>> fetchHospitals() async {
@@ -14,7 +15,7 @@ Future<Map<String, String>> fetchHospitals() async {
   };
 
   final response = await http.get(
-    Uri.parse('http://localhost:3000/hospitals'),
+    Uri.parse('${BaseUrl.baseUrl}/hospitals'),
     headers: headers,
   );
 
