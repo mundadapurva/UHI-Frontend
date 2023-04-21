@@ -104,22 +104,27 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         emit(AuthLoading());
         try {
           // await Future.delayed(const Duration(seconds: 4));
-          final jsonData = {
-            'shopname': event.shopName,
-            'address': event.shopAddress,
-          };
-
-          final response = await http.post(url, body: {
+          // final jsonData = ;
+          final header = {"Content-Type": "application/json"};
+          final body = {
             'chemistId': event.license,
             'firstName': event.name,
             'phone': event.phone,
             'email': event.email,
             'password': event.password,
-            'shopDetails': jsonData
-          });
-          // log(response.body);
-          final parsed = jsonDecode(response.body) as Map<String, dynamic>;
+            'shopDetails': {
+              'shopname': event.shopName,
+              'address': event.shopAddress,
+            }
+          };
+
+          print(body);
+          print(url);
+          final response =
+              await http.post(url, body: json.encode(body), headers: header);
+          final parsed = jsonDecode(response.body);
           // log(parsed.toString());
+
           final id = parsed['chemistId'];
 
           final SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -129,7 +134,10 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
           if (response.statusCode == 200) {
             emit(AuthSuccess(
-                id: id, message: parsed['message'], type: 'chemist'));
+              id: id,
+              message: parsed['message'],
+              type: 'chemist',
+            ));
           } else {
             emit(AuthFailure(message: 'Registration failed'));
           }

@@ -50,7 +50,7 @@ dependencies:
   flutter_login: ^4.1.1
   local_auth: 
   intl: ^0.18.1
-
+  toggle_switch: ^2.0.1
 
 dev_dependencies:
   flutter_test:

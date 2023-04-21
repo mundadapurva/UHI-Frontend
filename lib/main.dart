@@ -2,6 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:landing_page/design/widgets/chemist/uhi_chemist_dashboard.dart';
 import 'package:landing_page/design/widgets/uhi_add_prescription.dart';
 import 'package:landing_page/design/widgets/uhi_bottom_navbar.dart';
 import 'package:landing_page/design/widgets/uhi_doctor_dashboard.dart';

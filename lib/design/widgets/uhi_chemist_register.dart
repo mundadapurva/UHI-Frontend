@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:landing_page/design/pages/login_page.dart';
 
 import '../../logic/auth_bloc/auth_bloc.dart';
 
@@ -42,6 +43,10 @@ class _UhiChemistRegisterState extends State<UhiChemistRegister> {
                 content: Text(state.message),
               ),
             );
+            Navigator.of(context)
+                .pushReplacement(MaterialPageRoute(builder: (context) {
+              return LoginPage(type: state.type!, id: state.id);
+            }));
           } else if (state is AuthFailure) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(

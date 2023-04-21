@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_login/flutter_login.dart';
+import 'package:landing_page/design/widgets/chemist/uhi_chemist_dashboard.dart';
 import 'package:landing_page/design/widgets/uhi_doctor_dashboard.dart';
 import 'package:landing_page/logic/auth_bloc/auth_bloc.dart';
 
@@ -45,7 +46,7 @@ class LoginPage extends StatelessWidget {
                 context,
                 MaterialPageRoute(
                   builder: (context) {
-                    return const Placeholder(); // TODO: ChemistHomePage
+                    return const UhiChemistDashboard(); // TODO: ChemistHomePage
                   },
                 ),
               );
