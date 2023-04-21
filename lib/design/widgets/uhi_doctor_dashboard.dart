@@ -82,8 +82,8 @@ class _UhiDoctorDashboardState extends State<UhiDoctorDashboard> {
           children: [
             Container(
               padding: const EdgeInsets.all(8),
-              child: const Column(
-                children: [
+              child:  Column(
+                children: const [
                   Text(
                     'Scan QR code to check-in your patient',
                     style: TextStyle(
@@ -125,7 +125,7 @@ class _UhiDoctorDashboardState extends State<UhiDoctorDashboard> {
                       itemCount: data!.length,
                       itemBuilder: (context, index) {
                         return data.length == 0
-                            ? Text('No appoints')
+                            ? const Text('No appoints')
                             : Card(
                                 elevation: 4,
                                 child: SingleChildScrollView(

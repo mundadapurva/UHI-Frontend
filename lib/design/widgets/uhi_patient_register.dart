@@ -100,6 +100,9 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                       if (value!.isEmpty) {
                         return 'Please enter your phone number';
                       }
+                      if (value.length != 10) {
+                        return 'Please enter a valid phone number';
+                      }
                       return null;
                     },
                     controller: _phoneController,
@@ -124,6 +127,9 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your email';
+                      }
+                      if (validateEmail(value) == false) {
+                        return 'Please enter a valid email';
                       }
                       return null;
                     },
@@ -150,12 +156,15 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                       if (value!.isEmpty) {
                         return 'Please enter your aadhaar number';
                       }
+                      if (value.length != 12) {
+                        return 'Please enter a valid aadhaar number';
+                      }
                       return null;
                     },
                     controller: _aadharController,
                     maxLength: 12,
                     decoration: const InputDecoration(
-                      hintText: 'Enter your license number',
+                      hintText: 'Enter your aadhaar number',
                       border: OutlineInputBorder(),
                       contentPadding: EdgeInsets.all(5),
                       counter: Offstage(),
@@ -163,7 +172,7 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                   ),
                   const SizedBox(height: 15),
                   const Text(
-                    'Data of Birth',
+                    'DATE OF BIRTH',
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
@@ -172,13 +181,16 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                   TextFormField(
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter your dob';
+                        return 'Please enter your dob in dd/mm/yyyy format';
+                      }
+                      if (value.length != 10) {
+                        return 'Please enter a valid dob';
                       }
                       return null;
                     },
                     controller: _dobController,
                     decoration: const InputDecoration(
-                      hintText: 'Enter your dob',
+                      hintText: 'Enter your dob in dd/mm/yyyy format',
                       border: OutlineInputBorder(),
                       contentPadding: EdgeInsets.all(5),
                     ),
@@ -196,10 +208,10 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                       if (value!.isEmpty) {
                         return 'Please enter your address';
                       }
+
                       return null;
                     },
                     controller: _addressController,
-                    keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       hintText: 'Enter your address',
                       border: OutlineInputBorder(),
@@ -218,6 +230,9 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your password';
+                      }
+                      if (value.length < 8) {
+                        return 'Password should be atleast 8 characters';
                       }
                       return null;
                     },
@@ -242,6 +257,9 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your confirm password';
+                      }
+                      if (value.length < 8) {
+                        return 'Password should be atleast 8 characters';
                       }
                       return null;
                     },
@@ -307,4 +325,12 @@ class _UhiPatientRegisterState extends State<UhiPatientRegister> {
       ),
     );
   }
+}
+
+bool validateEmail(String email) {
+  const pattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
+
+  final regExp = RegExp(pattern);
+
+  return regExp.hasMatch(email);
 }

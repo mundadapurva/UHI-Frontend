@@ -12,7 +12,6 @@ class UhiIntroScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       body: PageView(
         children: [
@@ -89,44 +88,47 @@ class UhiIntroScreen extends StatelessWidget {
                   height: 250,
                 ),
                 const SizedBox(
-                  height: 50,
+                  height: 30,
                 ),
                 const Text(
                   'Get Started?',
                   style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                  ),
-                ),
-                Expanded(
-                  child: Container(),
-                ),
-                const Text(
-                  'REGISTER AS:',
-                  style: TextStyle(
-                    fontSize: 30,
+                    fontSize: 25,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
                 const SizedBox(
-                  height: 15,
+                  height: 10,
+                ),
+                // Expanded(
+                //   child: Container(),
+                // ),
+                const Text(
+                  'Register As:',
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 Container(
-                  padding: const EdgeInsets.all(17),
-                  margin: const EdgeInsets.all(10),
+                  padding: const EdgeInsets.all(8),
+                  margin: const EdgeInsets.all(4),
                   child: AnimatedButton(
                     color: Colors.white,
                     onPressed: () async {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                      Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => const UhiPatientRegister(),
                       ));
                     },
                     enabled: true,
                     shadowDegree: ShadowDegree.light,
-                    width: 170,
-                    height: 55,
+                    width: 160,
+                    height: 50,
                     child: const Text(
                       'PATIENT',
                       style: TextStyle(
@@ -138,21 +140,21 @@ class UhiIntroScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.all(17),
+                  padding: const EdgeInsets.all(8),
                   margin: const EdgeInsets.all(10),
                   child: AnimatedButton(
                     color: Colors.white,
                     onPressed: () async {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const UhiChemistRegister(),
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const UhiDoctorRegister(),
                       ));
                     },
                     enabled: true,
                     shadowDegree: ShadowDegree.light,
-                    width: 170,
-                    height: 55,
+                    width: 160,
+                    height: 50,
                     child: const Text(
-                      'CHEMIST',
+                      'DOCTOR',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.blue,
@@ -162,26 +164,25 @@ class UhiIntroScreen extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: const EdgeInsets.all(17),
+                  padding: const EdgeInsets.all(10),
                   margin: const EdgeInsets.all(10),
                   child: AnimatedButton(
                     color: Colors.white,
                     onPressed: () async {
-                      Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const UhiDoctorRegister(),
+                      Navigator.of(context).push(MaterialPageRoute(
+                        builder: (context) => const UhiChemistRegister(),
                       ));
                     },
                     enabled: true,
                     shadowDegree: ShadowDegree.light,
-                    width: 170,
-                    height: 55,
+                    width: 160,
+                    height: 50,
                     child: const Text(
-                      'DOCTOR',
+                      'CHEMIST',
                       style: TextStyle(
                         fontSize: 20,
                         color: Colors.blue,
                         fontWeight: FontWeight.w600,
-
                       ),
                     ),
                   ),

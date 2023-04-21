@@ -57,7 +57,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
           brightness: Brightness.dark,
         ),
-        themeMode: ThemeMode.system,
+        themeMode: ThemeMode.light,
         // home: LoginPage(type: 'user', id: authToken!),
         home: authToken != null
             ? const UhiBottomNavbar()
