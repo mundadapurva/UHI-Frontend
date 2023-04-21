@@ -1,4 +1,3 @@
-
 import 'dart:convert';
 import 'dart:developer';
 
@@ -21,41 +20,52 @@ class UhiQRGenerator extends StatefulWidget {
 }
 
 class _UhiQRGeneratorState extends State<UhiQRGenerator> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // const SizedBox(height: 30),
-            Text(
-              widget.name,
-              style: TextStyle(
-                fontSize: 25,
-                // fontWeight: FontWeight.w500,
+      body: Padding(
+        padding: const EdgeInsets.only(top: 80.0),
+        child: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              // const SizedBox(height: 30),
+              Text(
+                widget.name,
+                style: const TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            Text(
-              widget.email,
-              style: TextStyle(
-                fontSize: 15,
-                // fontWeight: FontWeight.w500,
+              Text(
+                widget.email,
+                style: const TextStyle(
+                  fontSize: 20,
+                  // fontWeight: FontWeight.w500,
+                ),
               ),
-            ),
-            const SizedBox(height: 20),
-            QrImage(
-              data: jsonEncode({
-                'id': widget.id,
-                'name': widget.name
-              }).toString(),
-              size: 200,
-            ),
-            // const SizedBox(height: 40),
-            // buildTextField(context),
-          ],
+              const SizedBox(height: 20),
+              QrImage(
+                data: jsonEncode({
+                  'id': widget.id,
+                  'name': widget.name,
+                }).toString(),
+                size: 275,
+              ),
+              const SizedBox(height: 40),
+              // buildTextField(context),
+              const SizedBox(height: 20),
+              const Text(
+                'Scan this QR code to add your medical history to your profile.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 20,
+                  // fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:landing_page/design/widgets/chemist/uhi_chemist_dashboard.dart';
 import 'package:landing_page/design/widgets/uhi_add_prescription.dart';
+import 'package:landing_page/design/widgets/uhi_bottom_navbar.dart';
 import 'package:landing_page/design/widgets/uhi_doctor_dashboard.dart';
 import 'package:landing_page/design/widgets/uhi_intro_screen.dart';
 import 'package:landing_page/logic/query_bloc/query_bloc.dart';
@@ -59,7 +60,7 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.system,
         // home: LoginPage(type: 'user', id: authToken!),
         home: authToken != null
-            ? const UhiChemistDashboard()
+            ? const UhiBottomNavbar()
             : const UhiIntroScreen(),
         // home: authToken != null ? UhiDoctorDashboard() : const UhiIntroScreen(),
 

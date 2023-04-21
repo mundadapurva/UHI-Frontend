@@ -5,12 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:landing_page/design/widgets/uhi_book_appointment.dart';
+import 'package:landing_page/design/widgets/uhi_carousel.dart';
 import 'package:landing_page/design/widgets/uhi_doctor_dashboard.dart';
+import 'package:landing_page/design/widgets/uhi_news_list.dart';
 
 import 'package:landing_page/design/widgets/uhi_qr_generator.dart';
 import 'package:landing_page/design/widgets/uhi_qr_scanner.dart';
 import 'package:landing_page/utils/get_auth_token.dart';
-
 
 import 'design/widgets/uhi_bottom_navbar.dart';
 
@@ -27,7 +28,6 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         title: const Text('Unified Healthcare Interface',
@@ -89,10 +89,27 @@ class _MyHomePageState extends State<MyHomePage> {
       //     ],
       //   ),
       // ),
-      body: const UhiBookAppointment(),
-      bottomNavigationBar: const UhiBottomNavbar(),
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const UhiCarousel(),
+          const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: Text(
+              "Health News: ",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: Colors.blue,
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          UhiNewsList(),
+        ],
+      ),
+      // bottomNavigationBar: const UhiBottomNavbar(),
     );
     // return UhiDoctorDashboard();
-
   }
 }

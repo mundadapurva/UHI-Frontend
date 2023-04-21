@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:landing_page/design/pages/uhi_get_chemists.dart';
+import 'package:landing_page/design/widgets/uhi_bottom_navbar.dart';
+import 'package:landing_page/design/widgets/uhi_intro_screen.dart';
 import 'package:landing_page/home_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../pages/user_medical_history.dart';
+import 'uhi_coming_soon.dart';
 
 class UhiDrawer extends StatelessWidget {
   const UhiDrawer({super.key});
@@ -34,12 +38,12 @@ class UhiDrawer extends StatelessWidget {
             elevation: 2,
             child: ListTile(
               leading: const Icon(Icons.person, color: Colors.blue),
-              title: const Text('Profile'),
+              title: const Text('Home'),
               onTap: () {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const MyHomePage(),
+                    builder: (context) => const UhiBottomNavbar(),
                   ),
                 );
               },
@@ -80,7 +84,11 @@ class UhiDrawer extends StatelessWidget {
               leading: const Icon(Icons.security_outlined, color: Colors.blue),
               title: const Text('Insurance'),
               onTap: () {
-                Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const UhiComingSoon(),
+                  ),
+                );
               },
             ),
           ),
@@ -89,8 +97,15 @@ class UhiDrawer extends StatelessWidget {
             child: ListTile(
               leading: const Icon(Icons.logout, color: Colors.blue),
               title: const Text('Logout'),
-              onTap: () {
-                Navigator.of(context).pop();
+              onTap: () async {
+                final SharedPreferences prefs =
+                    await SharedPreferences.getInstance();
+                prefs.remove('accessToken');
+                Navigator.of(context).pushReplacement(
+                  MaterialPageRoute(
+                    builder: (context) => const UhiIntroScreen(),
+                  ),
+                );
               },
             ),
           ),

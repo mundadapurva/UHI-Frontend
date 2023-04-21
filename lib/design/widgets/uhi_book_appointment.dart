@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:landing_page/design/widgets/uhi_bottom_navbar.dart';
+import 'package:landing_page/design/widgets/uhi_drawer.dart';
 import 'package:landing_page/design/widgets/uhi_specialities_list.dart';
 
 import '../../logic/search_delegate/speciality_search.dart';
 
 class UhiBookAppointment extends StatefulWidget {
   const UhiBookAppointment({super.key});
-
-
 
   @override
   State<UhiBookAppointment> createState() => _UhiBookAppointmentState();
@@ -17,7 +17,11 @@ class _UhiBookAppointmentState extends State<UhiBookAppointment> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: const Text('Book Appointment'),
+      ),
+      drawer: const UhiDrawer(),
+      // bottomNavigationBar: const UhiBottomNavbar(),
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(10),
@@ -34,13 +38,16 @@ class _UhiBookAppointmentState extends State<UhiBookAppointment> {
                   style: const TextStyle(fontSize: 13),
                   controller: _searchController,
                   onTap: () {
-                    showSearch(
+                    final val = showSearch(
                       context: context,
                       delegate: SpecialtySearchDelegate(),
                     );
+                    if (val != null) {
+                      return;
+                    }
                   },
                   decoration: InputDecoration(
-                    hintText: 'Search Symptoms/Specialities',
+                    hintText: 'Search Doctors near you',
                     // Add a clear button to the search bar
                     suffixIcon: IconButton(
                       icon: const Icon(Icons.clear),

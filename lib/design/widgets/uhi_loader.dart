@@ -9,10 +9,10 @@ class UhiLoader extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image(
+        children: const [
+           Image(
             image: AssetImage(
               'assets/images/loader-rolling.gif',
             ),
