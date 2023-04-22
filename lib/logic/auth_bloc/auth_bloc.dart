@@ -57,22 +57,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     on<AuthRegisterDoctorEvent>(
       ((event, emit) async {
         final url = Uri.parse('${BaseUrl.baseUrl}/doctors');
+        print(url.toString());
 
         emit(AuthLoading());
         try {
           // await Future.delayed(const Duration(seconds: 4));
           print(url.toString());
-          final response = await http.post(url, body: {
-            'doctorLicId': event.license,
-            'firstName': event.name,
-            'phone': event.phone,
-            'address': event.address,
-            'email': event.email,
-            'password': event.password,
-            'specialization': event.specialization,
-            'hospital': event.hospital,
-            'qualification': event.qualification,
-          });
+          final response = await http.post(
+            url,
+            body: {
+              'doctorLicId': event.license,
+              'firstName': event.name,
+              'phone': event.phone,
+              'address': event.address,
+              'email': event.email,
+              'password': event.password,
+              'specialization': event.specialization,
+              'hospital': event.hospital,
+              'qualification': event.qualification,
+            },
+          );
           print(response.body);
           final parsed =
               await jsonDecode(response.body) as Map<String, dynamic>;
@@ -179,6 +183,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
               body: {'chemistId': event.id, 'password': event.password},
             );
           }
+          log('Response: ${response.body}');
           final parsed = jsonDecode(response.body) as Map<String, dynamic>;
           final SharedPreferences prefs = await SharedPreferences.getInstance();
           prefs.setString('accessToken', parsed['accessToken']);

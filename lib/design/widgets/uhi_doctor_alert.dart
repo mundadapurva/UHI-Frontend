@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'package:landing_page/design/widgets/uhi_add_prescription.dart';
 
+import '../pages/get_user_prescription_history.dart';
 import '../pages/uhi_add_medical_history.dart';
 
 class UhiDoctorAlert extends StatelessWidget {
@@ -64,6 +65,23 @@ class UhiDoctorAlert extends StatelessWidget {
               },
               child:
                   const Text('Add Prescription', textAlign: TextAlign.center),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () {
+                onPressed();
+                // Navigator.of(context).pop();
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => UhiUserPrescriptionHistory(
+                      userJson: userJson,
+                    ),
+
+                  ),
+                );
+              },
+              child:
+                  const Text('View Prescription', textAlign: TextAlign.center),
             ),
           ],
         ));

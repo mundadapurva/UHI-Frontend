@@ -103,6 +103,9 @@ class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
                       if (value!.isEmpty) {
                         return 'Please enter your phone number';
                       }
+                      if (value.length != 10) {
+                        return 'Please enter a valid phone number';
+                      }
                       return null;
                     },
                     controller: _phoneController,
@@ -127,6 +130,9 @@ class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your email';
+                      }
+                      if (validateEmail(value) == false) {
+                        return 'Please enter a valid email';
                       }
                       return null;
                     },
@@ -203,7 +209,7 @@ class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
                     },
                     controller: _qualificationController,
                     decoration: const InputDecoration(
-                      hintText: 'Enter your specialization',
+                      hintText: 'Enter your qualification',
                       border: OutlineInputBorder(),
                       contentPadding: EdgeInsets.all(5),
                     ),
@@ -217,12 +223,6 @@ class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
                     ),
                   ),
                   TextFormField(
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return 'Please enter your associated hospital';
-                      }
-                      return null;
-                    },
                     controller: _associatedHospitalController,
                     decoration: const InputDecoration(
                       hintText: 'Enter your associated hospital',
@@ -247,7 +247,7 @@ class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
                     },
                     controller: _addressController,
                     decoration: const InputDecoration(
-                      hintText: 'Enter your landmark',
+                      hintText: 'Enter your address',
                       border: OutlineInputBorder(),
                       contentPadding: EdgeInsets.all(5),
                     ),
@@ -264,6 +264,9 @@ class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your password';
+                      }
+                      if (value.length < 8) {
+                        return 'Password must be at least 8 characters';
                       }
                       return null;
                     },
@@ -289,6 +292,9 @@ class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your confirm password';
+                      }
+                      if (value.length < 8) {
+                        return 'Password must be at least 8 characters';
                       }
                       return null;
                     },
@@ -355,4 +361,12 @@ class _UhiDoctorRegisterState extends State<UhiDoctorRegister> {
       ),
     );
   }
+}
+
+bool validateEmail(String email) {
+  const pattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
+
+  final regExp = RegExp(pattern);
+
+  return regExp.hasMatch(email);
 }

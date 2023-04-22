@@ -3,7 +3,6 @@ import 'package:landing_page/design/widgets/uhi_bottom_sheet.dart';
 import 'package:landing_page/design/widgets/uhi_medical_history_list.dart';
 
 class UhiAddMedicalHistory extends StatefulWidget {
-
   const UhiAddMedicalHistory({super.key, required this.userId});
   final String userId;
   @override
@@ -16,6 +15,7 @@ class _UhiAddMedicalHistoryState extends State<UhiAddMedicalHistory> {
     return Scaffold(
         body: SingleChildScrollView(
       child: Container(
+        height: 900,
         padding: const EdgeInsets.all(8),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -29,7 +29,7 @@ class _UhiAddMedicalHistoryState extends State<UhiAddMedicalHistory> {
                   fontWeight: FontWeight.w600,
                   color: Colors.blue),
             ),
-            const UhiMedicalHistoryList(),
+            UhiMedicalHistoryList(userId: widget.userId),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -44,7 +44,9 @@ class _UhiAddMedicalHistoryState extends State<UhiAddMedicalHistory> {
                           top: Radius.circular(25.0),
                         ),
                       ),
-                      builder: (context) => UhiBottomSheet(userId: widget.userId,),
+                      builder: (context) => UhiBottomSheet(
+                        userId: widget.userId,
+                      ),
                     );
                   },
                   child: const Text('Add Medical History'),

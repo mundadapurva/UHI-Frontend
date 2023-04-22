@@ -37,25 +37,26 @@ class UhiDoctorDashboard extends StatefulWidget {
 }
 
 class _UhiDoctorDashboardState extends State<UhiDoctorDashboard> {
-  String name = "";
+  String? name = "";
   @override
   void initState() {
     // TODO: implement initState
+    getDetails();
     super.initState();
   }
 
   getDetails() async {
-    name = await getUserName().toString();
+    name = await getUserName();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          name == "" ? "User" : name,
-          style: const TextStyle(
-            fontSize: 14,
+        title: const  Text(
+           "Doctor Dashboard ",
+          style:  TextStyle(
+            // fontSize: 14,
           ),
           textAlign: TextAlign.left,
         ),
@@ -82,8 +83,8 @@ class _UhiDoctorDashboardState extends State<UhiDoctorDashboard> {
           children: [
             Container(
               padding: const EdgeInsets.all(8),
-              child: const Column(
-                children: [
+              child: Column(
+                children: const [
                   Text(
                     'Scan QR code to check-in your patient',
                     style: TextStyle(
@@ -130,7 +131,7 @@ class _UhiDoctorDashboardState extends State<UhiDoctorDashboard> {
                                 elevation: 4,
                                 child: SingleChildScrollView(
                                   child: Container(
-                                    height: 80,
+                                    height: 100,
                                     margin: const EdgeInsets.all(3),
                                     padding: const EdgeInsets.all(10),
                                     decoration: BoxDecoration(

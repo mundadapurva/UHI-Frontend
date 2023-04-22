@@ -79,10 +79,10 @@ class QueryBloc extends Bloc<QueryEvent, QueryState> {
           print(jsonEncode(body));
           final response = await http.post(url,
               headers: {
-                'authorization': 'Bearer $token'
-                // "Content-Type": "application/json"
+                'authorization': 'Bearer $token',
+                "Content-Type": "application/json"
               },
-              body: body);
+              body: json.encode(body));
           final parsed = jsonDecode(response.body);
           if (response.statusCode == 200) {
             emit(QuerySuccess(message: parsed['message']));

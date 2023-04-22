@@ -101,6 +101,9 @@ class _UhiChemistRegisterState extends State<UhiChemistRegister> {
                       if (value!.isEmpty) {
                         return 'Please enter your phone number';
                       }
+                      if (value.length != 10) {
+                        return 'Please enter a valid phone number';
+                      }
                       return null;
                     },
                     controller: _phoneController,
@@ -125,6 +128,9 @@ class _UhiChemistRegisterState extends State<UhiChemistRegister> {
                     validator: (value) {
                       if (value!.isEmpty) {
                         return 'Please enter your email';
+                      }
+                      if (validateEmail(value) == false) {
+                        return 'Please enter a valid email';
                       }
                       return null;
                     },
@@ -164,7 +170,7 @@ class _UhiChemistRegisterState extends State<UhiChemistRegister> {
                   ),
                   const SizedBox(height: 15),
                   const Text(
-                    'SHOP NAME',
+                    'PHARMACY NAME',
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
@@ -173,20 +179,20 @@ class _UhiChemistRegisterState extends State<UhiChemistRegister> {
                   TextFormField(
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter your shop name';
+                        return 'Please enter your pharmacy name';
                       }
                       return null;
                     },
                     controller: _shopNameController,
                     decoration: const InputDecoration(
-                      hintText: 'Enter your shop name',
+                      hintText: 'Enter your pharmacy name',
                       border: OutlineInputBorder(),
                       contentPadding: EdgeInsets.all(5),
                     ),
                   ),
                   const SizedBox(height: 15),
                   const Text(
-                    'SHOP ADDRESS',
+                    'PHARMACY ADDRESS',
                     style: TextStyle(
                       fontSize: 13,
                       fontWeight: FontWeight.w600,
@@ -195,13 +201,13 @@ class _UhiChemistRegisterState extends State<UhiChemistRegister> {
                   TextFormField(
                     validator: (value) {
                       if (value!.isEmpty) {
-                        return 'Please enter your city';
+                        return 'Please enter your pharmacy address';
                       }
                       return null;
                     },
                     controller: _shopAddressController,
                     decoration: const InputDecoration(
-                      hintText: 'Enter your city',
+                      hintText: 'Enter your pharmacy address',
                       border: OutlineInputBorder(),
                       contentPadding: EdgeInsets.all(5),
                     ),
@@ -308,4 +314,12 @@ class _UhiChemistRegisterState extends State<UhiChemistRegister> {
       ),
     );
   }
+}
+
+bool validateEmail(String email) {
+  const pattern = r'^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$';
+
+  final regExp = RegExp(pattern);
+
+  return regExp.hasMatch(email);
 }
